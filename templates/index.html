@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahayak — Your Trusted FD Advisor | Blostem</title>
+  <meta name="description" content="Sahayak is an intelligent, multilingual Fixed Deposit advisor for rural India. Get guidance in Hindi, Bhojpuri, and Marathi from Ramesh Bhaiya — your trusted neighborhood FD expert." />
+  <meta property="og:title" content="Sahayak — Intelligent Vernacular FD Advisor" />
+  <meta property="og:description" content="Build wealth with confidence. Sahayak explains FD jargon, plans your goals, and guides you through booking — in your own language." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       BACKGROUND AMBIENT ORBS
+  ════════════════════════════════════════════════════════════ -->
+  <div class="ambient-orb orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb orb-2" aria-hidden="true"></div>
+  <div class="ambient-orb orb-3" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════════════════════════ -->
+  <header class="app-header" id="app-header">
+    <div class="header-left">
+      <div class="logo-mark" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" fill="url(#logo-grad)" opacity="0.9"/>
+          <text x="16" y="21" text-anchor="middle" font-size="14" font-family="Plus Jakarta Sans" font-weight="700" fill="#0A0E1A">स</text>
+          <defs>
+            <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32">
+              <stop offset="0%" stop-color="#F5A623"/>
+              <stop offset="100%" stop-color="#FF6B35"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">Sahayak</span>
+        <span class="brand-tagline" data-i18n="brand_tagline">Trusted FD Advisor</span>
+      </div>
+    </div>
+
+    <div class="header-center">
+      <!-- Language Selector -->
+      <div class="language-selector" id="language-selector" role="group" aria-label="Select language">
+        <button class="lang-pill active" data-lang="hi" id="lang-hi" aria-pressed="true">
+          <span class="lang-flag">🇮🇳</span> हिंदी
+        </button>
+        <button class="lang-pill" data-lang="bho" id="lang-bho" aria-pressed="false">
+          <span class="lang-flag">🌾</span> भोजपुरी
+        </button>
+        <button class="lang-pill" data-lang="mr" id="lang-mr" aria-pressed="false">
+          <span class="lang-flag">🏔️</span> मराठी
+        </button>
+        <button class="lang-pill" data-lang="en" id="lang-en" aria-pressed="false">
+          <span class="lang-flag">🌐</span> English
+        </button>
+        <div class="lang-slider" id="lang-slider" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="header-right" style="display:flex; align-items:center; gap:12px;">
+      <!-- Theme Selector -->
+      <select id="theme-selector" class="form-input" style="width: auto; padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; cursor: pointer; background: var(--bg-glass); color: var(--text-primary); border: 1px solid var(--border-subtle); outline: none;" onchange="switchTheme(this.value)">
+        <option value="classic"  data-i18n="theme_classic"  >✨ Classic Dark</option>
+        <option value="cyberpunk" data-i18n="theme_cyberpunk">📟 Cyberpunk</option>
+        <option value="forest"   data-i18n="theme_forest"   >🌿 Zen Forest</option>
+        <option value="ocean"    data-i18n="theme_ocean"    >🌊 Deep Ocean</option>
+      </select>
+      
+      <div class="advisor-status" id="advisor-status">
+        <span class="status-dot"></span>
+        <span class="status-text" data-i18n="advisor_online">Ramesh Bhaiya Online</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MAIN LAYOUT
+  ════════════════════════════════════════════════════════════ -->
+  <main class="app-layout" id="main-content">
+
+    <!-- ─── LEFT SIDEBAR ─────────────────────────────────────── -->
+    <aside class="sidebar" id="sidebar" aria-label="Bank rates and tools">
+
+      <!-- Tenure Selector -->
+      <div class="sidebar-section">
+        <div class="section-header">
+          <span class="section-icon">📈</span>
+          <span class="section-title" data-i18n="live_rates">Live FD Rates</span>
+        </div>
+        <div class="tenure-tabs" id="tenure-tabs" role="tablist" aria-label="Select tenure">
+          <button class="tenure-tab active" data-tenure="1_year" role="tab" aria-selected="true" data-i18n="1_yr">1 Year</button>
+          <button class="tenure-tab" data-tenure="2_year" role="tab" aria-selected="false" data-i18n="2_yr">2 Year</button>
+          <button class="tenure-tab" data-tenure="3_year" role="tab" aria-selected="false" data-i18n="3_yr">3 Year</button>
+          <button class="tenure-tab" data-tenure="5_year" role="tab" aria-selected="false" data-i18n="5_yr">5 Year</button>
+        </div>
+        <div class="bank-rates-list" id="bank-rates-list" aria-live="polite">
+          <!-- Populated by JS -->
+          <div class="rate-skeleton"></div>
+          <div class="rate-skeleton"></div>
+          <div class="rate-skeleton"></div>
+        </div>
+      </div>
+
+      <!-- DICGC Safety Card -->
+      <div class="sidebar-section">
+        <div class="safety-card glass-card">
+          <div class="safety-header">
+            <span class="safety-icon">🛡️</span>
+            <span class="safety-title" data-i18n="dicgc_protected">DICGC Protected</span>
+          </div>
+          <div class="safety-amount">₹5,00,000</div>
+          <div class="safety-desc" data-i18n="dicgc_desc">Govt. guaranteed per depositor per bank</div>
+        </div>
+      </div>
+
+      <!-- Goal Planner Launch -->
+      <div class="sidebar-section">
+        <div class="section-header">
+          <span class="section-icon">🎯</span>
+          <span class="section-title" data-i18n="goal_planner">Goal Planner</span>
+        </div>
+        <div class="goal-planner-form glass-card" id="goal-planner-form">
+          <div class="form-group">
+            <label class="form-label" for="goal-amount" data-i18n="goal_amt">Goal Amount (₹)</label>
+            <input class="form-input" type="number" id="goal-amount" placeholder="e.g. 500000" min="1000" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="available-funds" data-i18n="you_have">You Have (₹)</label>
+            <input class="form-input" type="number" id="available-funds" placeholder="e.g. 200000" min="1000" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="months-to-goal" data-i18n="timeline">Timeline (Months)</label>
+            <input class="form-input" type="number" id="months-to-goal" placeholder="e.g. 24" min="1" max="120" />
+          </div>
+          <button class="btn-plan" id="btn-calculate-plan" aria-label="Calculate FD ladder plan" data-i18n="calc_plan">
+            Calculate Plan ✨
+          </button>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ─── CHAT PANEL ─────────────────────────────────────── -->
+    <section class="chat-panel" id="chat-panel" aria-label="Chat with Ramesh Bhaiya">
+
+      <!-- Chat Messages -->
+      <div class="messages-container" id="messages-container" role="log" aria-live="polite" aria-label="Conversation">
+        <!-- Welcome message injected by JS -->
+      </div>
+
+      <!-- Typing Indicator -->
+      <div class="typing-indicator" id="typing-indicator" aria-label="Ramesh Bhaiya is typing" hidden>
+        <div class="typing-avatar">रब</div>
+        <div class="typing-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- Input Bar -->
+      <div class="input-bar" id="input-bar">
+        <div class="input-wrapper">
+          <textarea
+            class="message-input"
+            id="message-input"
+            placeholder="Ask Ramesh Bhaiya anything about FDs..."
+            rows="1"
+            maxlength="1000"
+            aria-label="Type your message"
+          ></textarea>
+          <button class="btn-voice" id="btn-voice" title="Voice input — speak your question" aria-label="Start voice input">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" y1="19" x2="12" y2="23"/>
+              <line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+          </button>
+        </div>
+        <button class="btn-send" id="btn-send" aria-label="Send message" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FD LADDER RESULTS MODAL
+  ════════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="plan-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title" data-i18n="modal_title">🎯 Your FD Ladder Plan</h2>
+        <button class="modal-close" id="modal-close" aria-label="Close plan">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Populated dynamically by JS -->
+      </div>
+      <div class="modal-chart-wrapper">
+        <canvas id="ladder-chart" aria-label="FD Ladder visualization chart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       INITIAL LANGUAGE SELECTION MODAL
+  ════════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="language-modal" role="dialog" aria-modal="true" aria-labelledby="lang-modal-title" hidden>
+    <div class="modal-card glass-card name-modal-card">
+      <div class="name-modal-avatar" style="font-weight: 800; color: var(--success); font-family: var(--font-mono);">₹</div>
+      <h2 class="name-modal-title" id="lang-modal-title">Choose Your Language</h2>
+      <p class="name-modal-subtitle" style="margin-bottom: 20px;">किस भाषा में बात करना पसंद करेंगे?</p>
+      <div style="display:flex; flex-direction:column; gap:10px; width:100%;">
+        <button class="btn-plan" onclick="selectInitialLanguage('hi')" aria-label="Hindi">हिंदी</button>
+        <button class="btn-plan" onclick="selectInitialLanguage('bho')" aria-label="Bhojpuri">भोजपुरी</button>
+        <button class="btn-plan" onclick="selectInitialLanguage('mr')" aria-label="Marathi">मराठी</button>
+        <button class="btn-plan" onclick="selectInitialLanguage('en')" aria-label="English">English</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       USER NAME MODAL (second launch)
+  ════════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="name-modal" role="dialog" aria-modal="true" aria-labelledby="name-modal-title" hidden>
+    <div class="modal-card glass-card name-modal-card">
+      <div class="name-modal-avatar">🙏</div>
+      <h2 class="name-modal-title" id="name-modal-title">Swagat hai!</h2>
+      <p class="name-modal-subtitle">Main Ramesh Bhaiya hoon — aapka trusted FD advisor.<br/>Aapka naam batayein taaki main personally help kar sakoon.</p>
+      <input class="form-input name-input" type="text" id="user-name-input" placeholder="Aapka naam..." maxlength="40" aria-label="Enter your name" />
+      <button class="btn-plan" id="btn-start-chat" aria-label="Start chatting">
+        Shuru Karein →
+      </button>
+    </div>
+  </div>
+
+  <!-- Rich Bank Tooltip (JS-controlled) -->
+  <div id="rich-tooltip" role="tooltip" aria-hidden="true" style="display:none; position:fixed; z-index:9999; pointer-events:none; max-width:260px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); padding: 14px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); font-family: var(--font-main); transition: opacity 0.2s ease;"></div>
+
+  <!-- App Scripts -->
+  <script src="/static/js/voice.js"></script>
+  <script src="/static/js/charts.js"></script>
+  <script src="/static/js/language.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

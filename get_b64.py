@@ -1,0 +1,10 @@
+import base64
+
+jana_svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='#90278E'/><text x='50' y='66' font-family='Arial' font-weight='bold' font-size='44' fill='white' text-anchor='middle'>JSFB</text></svg>"
+suryo_svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='#F37021'/><circle cx='50' cy='50' r='20' fill='white'/><path d='M50 15 L50 25 M50 75 L50 85 M15 50 L25 50 M75 50 L85 50 M25 25 L32 32 M68 68 L75 75 M25 75 L32 68 M68 25 L75 32' stroke='white' stroke-width='6' stroke-linecap='round'/></svg>"
+
+jana_b64 = base64.b64encode(jana_svg.encode('utf-8')).decode('utf-8')
+suryo_b64 = base64.b64encode(suryo_svg.encode('utf-8')).decode('utf-8')
+
+print("JANA:", f"data:image/svg+xml;base64,{jana_b64}")
+print("SURYO:", f"data:image/svg+xml;base64,{suryo_b64}")
