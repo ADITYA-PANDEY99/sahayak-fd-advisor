@@ -79,8 +79,8 @@ const LanguageManager = (() => {
       hi: 'रमेश भैया ऑनलाइन हैं', bho: 'रमेश भैया ऑनलाइन बानी', mr: 'रमेश भाऊ ऑनलाइन आहेत', en: 'Ramesh Bhaiya Online'
     },
     'SBI': { hi: 'एसबीआई', bho: 'एसबीआई', mr: 'एसबीआय', en: 'SBI' },
-    'HDFC Bank': { hi: 'एचडीएफसी बैंक', bho: 'एचडीएफसी बैंक', mr: 'एचडीएफसी बँक', en: 'HDFC Bank' },
-    'ICICI Bank': { hi: 'आईसीआईसीआई बैंक', bho: 'आईसीआईसीआई बैंक', mr: 'आयसीआयसीआय बँक', en: 'ICICI Bank' },
+    'HDFC': { hi: 'एचडीएफसी', bho: 'एचडीएफसी', mr: 'एचडीएफसी', en: 'HDFC' },
+    'ICICI': { hi: 'आईसीआईसीआई', bho: 'आईसीआईसीआई', mr: 'आयसीआयसीआय', en: 'ICICI' },
     'Post Office': { hi: 'पोस्ट ऑफिस', bho: 'पोस्ट ऑफिस', mr: 'पोस्ट ऑफिस', en: 'Post Office' },
     'AU SFB': { hi: 'एयू बैंक', bho: 'एयू बैंक', mr: 'एयू बँक', en: 'AU SFB' },
     'Unity SFB': { hi: 'यूनिटी बैंक', bho: 'यूनिटी बैंक', mr: 'युनिटी बँक', en: 'Unity SFB' },
