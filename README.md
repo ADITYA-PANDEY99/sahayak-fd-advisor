@@ -2,6 +2,9 @@
   <h1>🌟 Sahayak — Your Next-Gen AI Financial Advisor 🌟</h1>
   <p><b>Democratizing Fixed Deposit Returns for Bharat through AI, Localized Linguistics, and Intelligent Graphing.</b></p>
 
+  <h3>🚀 <a href="https://sahayak-fd-advisor.onrender.com/">CLICK HERE FOR LIVE PROJECT DEMO</a> 🚀</h3>
+  <p><i>(Evaluators: Please click the link above to test the fully functional live project!)</i></p>
+
   [![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
   [![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
   [![Gemini AI](https://img.shields.io/badge/Gemini_1.5_Pro-Generative_AI-FFD700?style=for-the-badge&logo=google&logoColor=black)](https://ai.google.dev/)
@@ -9,6 +12,12 @@
 </div>
 
 <br/>
+
+## 🔗 Important Links
+- **GitHub Repository:** [Sahayak FD Advisor](https://github.com/ADITYA-PANDEY99/sahayak-fd-advisor)
+- **Live Demo URL:** [https://sahayak-fd-advisor.onrender.com/](https://sahayak-fd-advisor.onrender.com/)
+
+---
 
 ## 🎯 What is Sahayak?
 **Sahayak (meaning "Helper")** is an extraordinary, Generative AI-powered virtual banking agent named **"Ramesh Bhaiya"**. It solves a major problem in the Indian financial ecosystem: *A lack of financial literacy and technical proficiency among rural and non-English speaking demographics.*
